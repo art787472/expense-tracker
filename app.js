@@ -11,6 +11,11 @@ const app = express()
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// setting file location for static files
+app.use(express.static('public'))
+
+
+
 const port = process.env.PORT || 3000
 
 app.use(routes)
