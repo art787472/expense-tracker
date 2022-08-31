@@ -1,24 +1,41 @@
-<h1>家庭收支簿</h1>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+<div class="container p-5">
+  <div class="row justify-content-center">
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
+
+    <div class="col-12 col-sm-8 mb-2">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>類別</option>
+        <option value="1">家居物業</option>
+        <option value="2">交通出行</option>
+        <option value="3">休閒娛樂</option>
+        <option value="2">餐飲食品</option>
+        <option value="2">其他</option>
+      </select>
+
+      <p>總金額：</p>
+      <h2 class="text-center">24500</h2>
     </div>
+
+
+    <ul class="list-group col-sm-8 col-12">
+      <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+        <img src="https://fontawesome.com/icons/home?style=solid" alt="">
+        <div class="div">
+          <h2>午餐</h2>
+          <span>2019/04/23</span>
+        </div>
+        <p class="fs-2">60</p>
+        <div class="btn-group">
+          <button class="btn btn-outline-info">修改</button>
+          <button class="btn btn-outline-danger">刪除</button>
+        </div>
+        
+      </li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
   </div>
 </div>
