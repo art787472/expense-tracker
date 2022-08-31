@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const exphbs = require('express-handlebars')
 const routes = require('./routes/index')
+require('./config/mongoose')
 
 const app = express()
 
