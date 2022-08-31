@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const exphbs = require('express-handlebars')
 const routes = require('./routes/index')
 require('./config/mongoose')
+const bodyParser = require('body-parser')
 
 const app = express()
 
@@ -15,6 +16,8 @@ app.set('view engine', 'hbs')
 // setting file location for static files
 app.use(express.static('public'))
 
+// set up body parser
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
 const port = process.env.PORT || 3000
