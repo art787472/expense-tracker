@@ -16,7 +16,7 @@ const hbs = exphbs.create({ defaultLayout: 'main',
                               dateFormat (date) { return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` 
                             },
                               getTotalAmount (expenses) {
-                                return expenses.reduce((prev, curr) => prev.amount + curr.amount, { amount: 0 })
+                                return expenses.reduce((prev, curr) => Number(prev.amount) + Number(curr.amount), { amount: 0 })
                               }
                             }
                           })
