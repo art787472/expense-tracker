@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ExpensesSchema = new Schema({
+const { MongooseAutoIncrementID } = require('mongoose-auto-increment-reworked')
+const expensesSchema = new Schema({
+  id: {
+    type: Number,
+    required: true
+  },
   name: {
     type: String,
     required: true
@@ -9,8 +14,10 @@ const ExpensesSchema = new Schema({
     type: Date,
     required: true
   },
-  category: {
-    type: String,
+  categoryId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Categories',
+    index: 'true',
     required: true
   },
   amount: {
@@ -19,4 +26,6 @@ const ExpensesSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('Expenses', ExpensesSchema)
+
+
+module.exports = mongoose.model('Expenses', expensesSchema)
