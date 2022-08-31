@@ -14,8 +14,11 @@ const app = express()
 const hbs = exphbs.create({ defaultLayout: 'main', 
                             extname: '.hbs',
                             helpers: {
-                              dateFormat (date) { return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` 
-                            }
+                              dateFormat (date) { return `${date.getFullYear()}-${String(date.getMonth()+ 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}` 
+                              },
+                              ifeq (a, b, options) {
+                                return a === b ? options.fn(this) : options.inverse(this) 
+                              }
                             }
                           })
 
