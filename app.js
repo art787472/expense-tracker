@@ -9,9 +9,23 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-// set up view engine
-app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
+// set up hbs dateformat helper
+const hbs = exphbs.create({ defaultLayout: 'main', 
+                            extname: '.hbs',
+                            helpers: {
+                              dateFormat (date) { return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` 
+                            },
+                              getTotalAmount (expenses) {
+                                return expenses.reduce((prev, curr) => prev.amount + curr.amount, { amount: 0 })
+                              }
+                            }
+                          })
+
+// set up template engine
+app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
+
+
 
 // setting file location for static files
 app.use(express.static('public'))

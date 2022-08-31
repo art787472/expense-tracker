@@ -14,7 +14,7 @@
       </select>
 
       <p>總金額：</p>
-      <h2 class="text-center">{{ totalAmount }}</h2>
+      <h2 class="text-center">{{ getTotalAmount expenses }}</h2>
     </div>
 
   {{#each expenses}}
@@ -23,7 +23,7 @@
         <img src="https://fontawesome.com/icons/home?style=solid" alt="">
         <div class="div">
           <h2>{{ this.name }}</h2>
-          <span>{{ this.date }}</span>
+          <span>{{dateFormat this.date }}</span>
         </div>
         <p class="fs-2">{{ this.amount }}</p>
         <div class="btn-group">
