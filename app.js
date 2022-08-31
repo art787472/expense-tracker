@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars')
 const routes = require('./routes/index')
 require('./config/mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const app = express()
 
@@ -14,10 +15,7 @@ const hbs = exphbs.create({ defaultLayout: 'main',
                             extname: '.hbs',
                             helpers: {
                               dateFormat (date) { return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` 
-                            },
-                              getTotalAmount (expenses) {
-                                return expenses.reduce((prev, curr) => Number(prev.amount) + Number(curr.amount), { amount: 0 })
-                              }
+                            }
                             }
                           })
 
@@ -35,6 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 const port = process.env.PORT || 3000
+
+app.use(methodOverride('_method'))
 
 app.use(routes)
 

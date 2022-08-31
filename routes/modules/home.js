@@ -9,7 +9,16 @@ const Expenses = require('./../../models/expenses')
   return sum
 }
 
-router.get('/edit', (req, res) => res.render('edit'))
+router.get('/edit/:id', (req, res) => {
+  const _id = req.params.id
+  console.log('_id', _id)
+  return Expenses.findOne({ _id })
+                  .lean()
+                  .then(expense => { 
+                    const expenseData = { ...expense }
+                    return res.render('edit', {expense: expenseData })})
+                  .catch(err => console.log(err))
+})
 
 router.get('/new', (req, res) => res.render('new'))
 
