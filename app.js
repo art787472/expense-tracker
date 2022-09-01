@@ -7,6 +7,7 @@ const routes = require('./routes/index')
 require('./config/mongoose')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 const app = express()
 
@@ -40,7 +41,12 @@ const hbs = exphbs.create({ defaultLayout: 'main',
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 
-
+// set up session
+app.use(session({
+  secret: "MySecret",
+  resave: true,
+  saveUninitialized: true
+}))
 
 // setting file location for static files
 app.use(express.static('public'))
