@@ -9,6 +9,7 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
+  console.log(req.body)
   const { name, email, password, confirmPassword } = req.body
   const errors = []
 
@@ -56,7 +57,7 @@ router.post('/register', (req, res) => {
         })
       })
       .catch(err => {
-      return res.render('error', { errorMessage: err })
+      console.error(err)
     })
     }
   })
