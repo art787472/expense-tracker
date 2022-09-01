@@ -1,17 +1,20 @@
 <div class="container p-5">
   <div class="row justify-content-center">
-
-
-
     <div class="col-12 col-sm-8 mb-2">
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <option selected>類別</option>
-        <option value="1">家居物業</option>
-        <option value="2">交通出行</option>
-        <option value="3">休閒娛樂</option>
-        <option value="4">餐飲食品</option>
-        <option value="5">其他</option>
-      </select>
+      <div class="dropdown mb-3">
+        <a class="btn btn-secondary dropdown-toggle w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          類別
+        </a>
+
+        <ul class="dropdown-menu text-center w-100">
+          <li><a class="w-100" href="/">全部類別</a></li>
+          <li><a class="w-100" href="/?sort=1">家居物業</a></li>
+          <li><a class="w-100" href="/?sort=2">交通出行</a></li>
+          <li><a class="w-100" href="/?sort=3">休閒娛樂</a></li>
+          <li><a class="w-100" href="/?sort=4">餐飲食品</a></li>
+          <li><a class="w-100" href="/?sort=5">其他</a></li>
+        </ul>
+      </div>
 
       <p>總金額：</p>
       <h2 class="text-center text-success">{{ totalAmount }}</h2>
@@ -38,9 +41,14 @@
       </li>
     {{/each}}
 
+    {{#unless expenses}}
+    <li class="list-group-item">還沒有支出，點擊下方新增</li>
+    {{/unless}}
     </ul> 
     
-    <div class="col-12 col-sm-8 d-flex justify-content-center"><a href="./new" class="btn btn-primary">新增支出</a></div>
+    <div class="col-12 col-sm-8 d-flex justify-content-center">
+        <a href="./new" class="btn btn-primary">新增支出</a>
+    </div>
     
   </div>
 

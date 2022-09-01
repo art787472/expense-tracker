@@ -17,7 +17,7 @@
           <div class="col-12 d-flex align-items-center mb-4">
             <label for="category" class="col-2">類別 *：</label>
             <select class="form-select form-select" aria-label=".form-select-lg example" name="categoryId" value="{{ expense.categoryId }}">
-              <option >選擇類別</option>
+              <option disabled>選擇類別</option>
               <option value="1" {{#ifeq expense.categoryId 1 }}selected{{/ifeq}}>家居物業</option>
               <option value="2" {{#ifeq expense.categoryId 2 }}selected{{/ifeq}}>交通出行</option>
               <option value="3" {{#ifeq expense.categoryId 3 }}selected{{/ifeq}} >休閒娛樂</option>

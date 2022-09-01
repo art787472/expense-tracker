@@ -1,3 +1,8 @@
 .list-group-item:nth-child(odd) {
   background-color: #eee;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
