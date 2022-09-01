@@ -18,6 +18,20 @@ const hbs = exphbs.create({ defaultLayout: 'main',
                               },
                               ifeq (a, b, options) {
                                 return a === b ? options.fn(this) : options.inverse(this) 
+                              },
+                              getIcon (categoryId) {
+                                switch (categoryId) {
+                                  case 1:
+                                    return 'fa-house'
+                                  case 2:
+                                    return 'fa-van-shuttle'
+                                  case 3:
+                                    return 'fa-face-grin-beam'
+                                  case 4:
+                                    return 'fa-utensils'
+                                  case 5:
+                                    return 'fa-pen'
+                                }
                               }
                             }
                           })

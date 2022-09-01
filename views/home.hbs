@@ -14,14 +14,14 @@
       </select>
 
       <p>總金額：</p>
-      <h2 class="text-center">{{ totalAmount }}</h2>
+      <h2 class="text-center text-success">{{ totalAmount }}</h2>
     </div>
 
   
     <ul class="list-group col-sm-8 col-12 mb-3">
     {{#each expenses}}
-      <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-        <img src="https://fontawesome.com/icons/home?style=solid" alt="">
+      <li class="list-group-item d-flex justify-content-between align-items-center py-3 ps-4">
+        <span class="text-info"><i class="fa-solid {{getIcon  this.categoryId}} fa-2xl"></i></span>
         <div class="div">
           <h2>{{ this.name }}</h2>
           <span>{{dateFormat this.date }}</span>
