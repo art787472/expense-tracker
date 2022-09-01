@@ -25,8 +25,7 @@ router.get('/new', (req, res) => res.render('new'))
 router.post('/new', (req, res) => {
  const expenseData = req.body
  const userId = req.user._id
- return Expenses.create({...expenseData, 
-                          id: Math.random(),
+ return Expenses.create({...expenseData,
                           categoryId: Number(expenseData.category),
                           userId})
                 .then(() => res.redirect('/'))

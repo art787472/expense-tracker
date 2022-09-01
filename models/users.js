@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const { MongooseAutoIncrementID } = require('mongoose-auto-increment-reworked')
 const userSchema = new Schema({
   name: {
     type: String,
@@ -17,5 +18,7 @@ const userSchema = new Schema({
     default: Date.now
   }
 })
+
+userSchema.plugin(MongooseAutoIncrementID.plugin, {modelName: 'User', field: 'id'})
 
 module.exports = mongoose.model('User', userSchema)

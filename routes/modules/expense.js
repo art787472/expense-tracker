@@ -10,7 +10,7 @@ router.delete('/:id', (req, res) => {
   const _id = req.params.id
   return Expenses.deleteOne({ _id, userId })
                 .then(() => res.redirect('/'))
-                .catch(err => res.end(err))
+                .catch(err => console.error(err))
 })
 
 router.put('/:id', (req, res) => {

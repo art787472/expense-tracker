@@ -24,7 +24,6 @@ const categories = [
   }
 ]
 
-
 db.on('error', () => {
   console.log('mongodb error!')
 })
@@ -35,5 +34,4 @@ db.once('open', () => {
       seeds.forEach(seed => console.log(`${seed.id}-${seed.name} generated`))
       process.exit()
     })
-   
 })
