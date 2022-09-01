@@ -11,7 +11,8 @@ const Expenses = require('./../../models/expenses')
 
 router.get('/edit/:id', (req, res) => {
   const _id = req.params.id
-  return Expenses.findOne({ _id })
+  const userId = req.user._id
+  return Expenses.findOne({ _id, userId })
                   .lean()
                   .then(expense => { 
                     const expenseData = { ...expense }
@@ -23,18 +24,24 @@ router.get('/new', (req, res) => res.render('new'))
 
 router.post('/new', (req, res) => {
  const expenseData = req.body
+ const userId = req.user._id
  console.log(expenseData)
  
- return Expenses.create({...expenseData, id: Math.random(), categoryId: Number(expenseData.category)})
+ return Expenses.create({...expenseData, 
+                          id: Math.random(),
+                          categoryId: Number(expenseData.category),
+                          userId})
                 .then(() => res.redirect('/'))
 })
 
-router.get('/', (req, res) => 
-  Expenses.find()
+router.get('/', (req, res) => {
+  const userId = req.user._id
+  Expenses.find({ userId })
           .lean()
+          .sort({ date: 1 })
           .then(expenses => {
             return res.render('home', { expenses, totalAmount: getTotalAmount(expenses) })}
             )
-          )
+          })
 
 module.exports = router
