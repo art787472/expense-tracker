@@ -3,6 +3,8 @@ const router = express.Router()
 
 const Expenses = require('./../../models/expenses')
 
+
+
 router.delete('/:id', (req, res) => {
   const _id = req.params.id
   return Expenses.findOne({ _id })
@@ -14,7 +16,6 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const _id = req.params.id
   const { id, name, date, categoryId, amount } = req.body
-  console.log(req.body)
   return Expenses.findOne({ _id })
                 .then(expense => {
                   expense.id = id

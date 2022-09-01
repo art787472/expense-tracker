@@ -11,7 +11,6 @@ const Expenses = require('./../../models/expenses')
 
 router.get('/edit/:id', (req, res) => {
   const _id = req.params.id
-  console.log('_id', _id)
   return Expenses.findOne({ _id })
                   .lean()
                   .then(expense => { 
@@ -34,8 +33,6 @@ router.get('/', (req, res) =>
   Expenses.find()
           .lean()
           .then(expenses => {
-            console.log(expenses)
-            console.log(getTotalAmount(expenses))
             return res.render('home', { expenses, totalAmount: getTotalAmount(expenses) })}
             )
           )
