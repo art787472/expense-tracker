@@ -8,8 +8,7 @@ const Expenses = require('./../../models/expenses')
 router.delete('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return Expenses.findOne({ _id, userId })
-                .then(expense => Expenses.remove(expense))
+  return Expenses.deleteOne({ _id, userId })
                 .then(() => res.redirect('/'))
                 .catch(err => res.end(err))
 })

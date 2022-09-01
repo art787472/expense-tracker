@@ -6,3 +6,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.icon-btn {
+  border-radius: 50%;
+  border: none;
+}

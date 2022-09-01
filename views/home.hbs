@@ -31,9 +31,9 @@
         </div>
         <p class="fs-2">{{ this.amount }}</p>
         <div >
-          <a class="btn btn-light" href="./edit/{{ this._id }}" data-bs-toggle="tooltip" data-bs-placement="right" title="修改"><i class="fa-solid fa-pen-to-square"></i></a>
+          <a class="btn btn-outline-secondary icon-btn mb-1" href="./edit/{{ this._id }}" data-bs-toggle="tooltip" data-bs-placement="right" title="修改"><i class="fa-solid fa-pen-to-square"></i></a>
           <form action="./expense/{{this._id}}?_method=DELETE" method="post">
-            <button type="submit" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="刪除"><i class="fa-solid fa-trash"></i></button>
+            <button type="submit" class="btn btn-outline-danger  icon-btn delete-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="刪除"><i class="fa-solid fa-trash"></i></button>
           </form>
           
         </div>
