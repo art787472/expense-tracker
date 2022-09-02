@@ -4,32 +4,66 @@
       <h1 class="text-center">請新增支出</h1>
       <span>* 必填欄位</span>
     </div>
-    <form class="row col-12 col-sm-8" method="post" action="./new">
-         <div class="col-12 d-flex align-items-center mb-4">
-            <label for="name" class="col-2">名稱 *：</label>
-            <input type="text" class="form-control" id="name" placeholder="名稱" name="name">
+    <form class="row col-12 col-sm-8  needs-validation " novalidate method="post" action="./new">
+         <div class="col-12   mb-4">
+            <label for="name" class="form-label">名稱 *：</label>
+            <input type="text" class="form-control" id="name" placeholder="名稱" name="name" required>
+            <div class="invalid-feedback">
+              請輸入名稱
+            </div>
+
           </div>
-          <div class="col-12 d-flex align-items-center mb-4">
-            <label for="date" class="col-2">日期 *：</label>
-            <input type="date" class="form-control" id="date" placeholder="日期" name="date">
+          <div class="col-12  mb-4">
+            <label for="date" class="form-label">日期 *：</label>
+            <input type="date" class="form-control" id="date" placeholder="日期" name="date" required>
+            <div class="invalid-feedback">
+              請輸入日期
+            </div>
           </div>
-          <div class="col-12 d-flex align-items-center mb-4">
-            <label for="category" class="col-2">類別 *：</label>
-            <select class="form-select form-select" id="category" aria-label=".form-select-lg example" name="category">
-              <option selected disabled>選擇類別</option>
+          <div class="col-12 mb-4">
+            <label for="category" class="form-label">類別 *：</label>
+            <select class="form-select" id="category" aria-label=".form-select-lg example" name="category" required>
+              <option selected disabled value="">選擇類別</option>
               <option value="1">家居物業</option>
               <option value="2">交通出行</option>
               <option value="3">休閒娛樂</option>
               <option value="4">餐飲食品</option>
               <option value="5">其他</option>
             </select>
+            <div class="invalid-feedback">
+              請選擇類別
+            </div>
           </div>
-          <div class="col-12 d-flex align-items-center mb-4">
-            <label for="amout" class="col-2">金額 *：</label>
-            <input type="number" class="form-control" id="amout" placeholder="金額" name="amount">
+          <div class="col-12 mb-4">
+            <label for="amout" class="form-label">金額 *：</label>
+            <input type="number" class="form-control" id="amout" placeholder="金額" name="amount" required>
+            <div class="invalid-feedback">
+              請輸入金額
+            </div>
           </div>
 
           <button class="btn btn-primary" type="submit">新增支出</button>
     </form>
   </div>
 </div>
+
+<script>
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+
+</script>

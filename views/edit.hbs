@@ -4,19 +4,25 @@
       <h1 class="text-center">請修改支出</h1>
       <span>* 必填欄位</span>
     </div>
-    <form class="row col-12 col-sm-8" method="post" action="../expense/{{ expense._id }}?_method=PUT">
+    <form class="row col-12 col-sm-8 needs-validation" novalidate method="post" action="../expense/{{ expense._id }}?_method=PUT">
     <input type="hidden" value="{{expense.id}}" name="id">
-         <div class="col-12 d-flex align-items-center mb-4">
-            <label for="inputPassword" class="col-2">名稱 *：</label>
-            <input type="text" class="form-control" id="inputPassword" placeholder="名稱" name="name" value="{{ expense.name }}">
+         <div class="col-12 mb-4">
+            <label for="name" class="form-label">名稱 *：</label>
+            <input type="text" class="form-control" id="name" placeholder="名稱" name="name" value="{{ expense.name }}" required>
+            <div class="invalid-feedback">
+              請輸入名稱
+            </div>
           </div>
-          <div class="col-12 d-flex align-items-center mb-4">
-            <label for="date" class="col-2">日期 *：</label>
-            <input type="date" class="form-control" id="date" placeholder="{{ expense.date}}" name="date" value="{{dateFormat expense.date}}">
+          <div class="col-12 mb-4">
+            <label for="date" class="form-label">日期 *：</label>
+            <input type="date" class="form-control" id="date" placeholder="{{ expense.date }}" name="date" value="{{dateFormat expense.date}}" required>
           </div>
-          <div class="col-12 d-flex align-items-center mb-4">
-            <label for="category" class="col-2">類別 *：</label>
-            <select class="form-select form-select" aria-label=".form-select-lg example" name="categoryId" value="{{ expense.categoryId }}">
+          <div class="invalid-feedback">
+            請輸入日期
+          </div>
+          <div class="col-12 mb-4">
+            <label for="category" class="form-label">類別 *：</label>
+            <select class="form-select form-select" aria-label=".form-select-lg example" name="categoryId" value="{{ expense.categoryId }}" required>
               <option disabled>選擇類別</option>
               <option value="1" {{#ifeq expense.categoryId 1 }}selected{{/ifeq}}>家居物業</option>
               <option value="2" {{#ifeq expense.categoryId 2 }}selected{{/ifeq}}>交通出行</option>
@@ -24,14 +30,40 @@
               <option value="4" {{#ifeq expense.categoryId 4 }}selected{{/ifeq}}>餐飲食品</option>
               <option value="5" >{{#ifeq expense.categoryId 5 }}selected{{/ifeq}}其他</option>
             </select>
+            <div class="invalid-feedback">
+              請選擇類別
+            </div>
           </div>
-          <div class="col-12 d-flex align-items-center mb-4">
-            <label for="amount" class="col-2">金額 *：</label>
-            <input type="number" class="form-control" id="amount" placeholder="amount" name="amount" value="{{ expense.amount }}">
+          <div class="col-12 mb-4">
+            <label for="amount" class="form-label">金額 *：</label>
+            <input type="number" class="form-control" id="amount" placeholder="amount" name="amount" value="{{ expense.amount }}" required>
+            <div class="invalid-feedback">
+              請輸入金額
+            </div>
           </div>
 
-          <button class="btn btn-primary" type="submit">送出
-          </button>
+          <button class="btn btn-primary" type="submit">送出</button>
     </form>
   </div>
 </div>
+
+<script>
+
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+
+</script>
