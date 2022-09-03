@@ -14,7 +14,7 @@ router.post('/register', (req, res) => {
   const errors = []
 
   if (!email || !password || !confirmPassword) {
-    errors.push({message: '有欄位未填'})
+    errors.push({ message: '有欄位未填' })
   }
 
   if (password !== confirmPassword) {
@@ -76,6 +76,7 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logout', (req, res) => {
   req.logout(() => console.log('logout'))
+  req.flash('success_msg', '你已經成功登出。')
   res.redirect('/users/login')
 })
 
