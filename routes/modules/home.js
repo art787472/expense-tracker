@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
           .lean()
           .sort({ date: 1 })
           .then(expenses => {
-            return res.render('home', { expenses, totalAmount: getTotalAmount(expenses) })}
+            return res.render('home', { expenses, totalAmount: getTotalAmount(expenses), sort })}
             )
           })
 
